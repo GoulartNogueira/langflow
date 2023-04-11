@@ -17,7 +17,12 @@ export default function ExtraSidebar() {
 	useEffect(() => {
 		async function getTypes(): Promise<void> {
 			// Make an asynchronous API call to retrieve all data.
-			let result = await getAll();
+			let result = await getAll()
+			
+			if (!result){
+				console.error("Failed to retrieve data from API at getAll()");
+				return;
+			}
 
 			// Update the state of the component with the retrieved data.
 			setData(result.data);
